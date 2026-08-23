@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Donasi &amp; Portofolio Developer — Klipin</title>
+  <meta name="description" content="Dukung pengembangan Klipin dan kenali developer di balik layanan ini, PAJAR." />
+  <link rel="canonical" href="https://klipin.example.com/donasi" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loading-title">KLIPIN</div>
+    <div class="loading-bar-track"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+    <div class="loading-caption">Memuat dunia...</div>
+  </div>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo"><span class="logo-block" aria-hidden="true"></span>KLIPIN</a>
+      <div class="navbar-right">
+        <div class="theme-quick" aria-label="Ganti tema cepat">
+          <button class="theme-swatch swatch-hitam" data-theme="hitam" title="Minecraft Hitam"></button>
+          <button class="theme-swatch swatch-abu" data-theme="abu" title="Minecraft Abu-abu"></button>
+          <button class="theme-swatch swatch-putih" data-theme="putih" title="Minecraft Putih"></button>
+          <button class="theme-swatch swatch-merah" data-theme="merah" title="Minecraft Merah"></button>
+          <button class="theme-swatch swatch-hijau" data-theme="hijau" title="Minecraft Hijau"></button>
+          <button class="theme-swatch swatch-biru" data-theme="biru" title="Minecraft Biru"></button>
+        </div>
+        <button class="options-btn" id="options-btn" title="Ganti tema" aria-label="Ganti tema">&#9881;</button>
+        <button class="dots-btn" id="dots-btn" aria-label="Buka menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="dots-menu" class="dots-menu">
+    <div class="dots-menu-panel pixel-corners">
+      <a href="/" class="nav-link">Beranda</a>
+      <a href="/cara-penggunaan" class="nav-link">Cara Penggunaan</a>
+      <a href="/larangan" class="nav-link">Larangan</a>
+      <a href="/donasi" class="nav-link active">Donasi</a>
+      <button class="pixel-btn sm dots-menu-close" id="dots-menu-close">TUTUP</button>
+    </div>
+  </nav>
+
+  <div id="options-overlay" class="options-overlay">
+    <div class="options-title">PILIH TEMA</div>
+    <div class="options-sub">Tersimpan otomatis di perangkatmu</div>
+    <div class="theme-grid">
+      <button class="pixel-btn theme-option" data-theme="hitam">Minecraft Hitam</button>
+      <button class="pixel-btn theme-option" data-theme="abu">Minecraft Abu-abu</button>
+      <button class="pixel-btn theme-option" data-theme="putih">Minecraft Putih</button>
+      <button class="pixel-btn theme-option" data-theme="merah">Minecraft Merah</button>
+      <button class="pixel-btn theme-option" data-theme="hijau">Minecraft Hijau</button>
+      <button class="pixel-btn theme-option" data-theme="biru">Minecraft Biru</button>
+    </div>
+    <button class="pixel-btn" id="options-close">TUTUP</button>
+  </div>
+
+  <a href="/" class="back-link container">&larr; kembali ke menu utama</a>
+
+  <main class="container" style="padding-bottom:60px;">
+    <div class="panel pixel-corners" style="max-width:540px;margin:20px auto;padding:32px;">
+      <div class="donate-dev">DEVELOPED BY PAJAR</div>
+      <div class="donate-dev-sub">Terima kasih sudah menggunakan Klipin</div>
+
+      <div class="donate-list">
+        <a class="donate-entry" href="https://pixajar.my.id" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 7-8-4v9l8 4 8-4V5l-8 4Z"/></svg>
+          <div class="donate-entry-body">
+            <div class="donate-entry-label">Portofolio 1</div>
+            <div class="donate-entry-value">pixajar.my.id</div>
+          </div>
+        </a>
+
+        <a class="donate-entry" href="https://pajar.biz.id" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 7-8-4v9l8 4 8-4V5l-8 4Z"/></svg>
+          <div class="donate-entry-body">
+            <div class="donate-entry-label">Portofolio 2</div>
+            <div class="donate-entry-value">pajar.biz.id</div>
+          </div>
+        </a>
+
+        <a class="donate-entry" href="https://tiktok.com/@whydoikeepwak1ngup67" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          <div class="donate-entry-body">
+            <div class="donate-entry-label">TikTok</div>
+            <div class="donate-entry-value">@whydoikeepwak1ngup67</div>
+          </div>
+        </a>
+
+        <a class="donate-entry" href="https://t.me/JarzGoslingF" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.2-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 7.3c.5-.4-.1-.6-.7-.2L7.4 13.4l-4.8-1.5c-1-.3-1-1 .2-1.5L20.6 3.6c.8-.3 1.6.2 1.3.7Z"/></svg>
+          <div class="donate-entry-body">
+            <div class="donate-entry-label">Telegram</div>
+            <div class="donate-entry-value">@JarzGoslingF</div>
+          </div>
+        </a>
+
+        <a class="donate-entry highlight" href="https://saweria.co/pajardong" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.2C.6 8.4 2.3 4.6 6 4.1c2-.3 3.9.6 6 3 2.1-2.4 4-3.3 6-3 3.7.5 5.4 4.3 4 7.7C19.5 16.4 12 21 12 21Z"/></svg>
+          <div class="donate-entry-body">
+            <div class="donate-entry-label">&#9733; Donasi &#9733;</div>
+            <div class="donate-entry-value">saweria.co/pajardong</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Klipin — Developer by PAJAR.</p>
+  </footer>
+
+  <div id="pwa-toast" class="pwa-toast" role="dialog" aria-label="Ajakan instal aplikasi">
+    <div class="pwa-toast-text">PAJAR Downloader terasa lebih cepat lewat aplikasi resmi.</div>
+    <div class="pwa-toast-actions">
+      <button id="pwa-install-btn" class="pixel-btn sm primary">UNDUH</button>
+      <button id="pwa-close-btn" class="pixel-btn sm">X</button>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

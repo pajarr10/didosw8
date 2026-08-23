@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Klipin  Satu Tautan, Semua Platform | Downloader Media Universal</title>
+  <meta name="description" content="Klipin adalah downloader media universal bertema Minecraft. Unduh video & foto TikTok, YouTube, Instagram, Douyin, Pinterest, Facebook, CapCut, dan Spotify tanpa watermark, gratis dan cepat." />
+  <link rel="canonical" href="https://klipin-dolot.vercel.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Klipin — Satu Tautan, Semua Platform" />
+  <meta property="og:description" content="Downloader media universal tema Minecraft. TikTok, YouTube, Instagram, dan lainnya tanpa watermark." />
+  <meta property="og:url" content="https://klipin-dolot.vercel.app/" />
+  <meta property="og:image" content="/assets/og-image.png" />
+  <meta property="og:locale" content="id_ID" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Klipin — Satu Tautan, Semua Platform" />
+  <meta name="twitter:description" content="Downloader media universal tema Minecraft tanpa watermark." />
+  <meta name="twitter:image" content="/assets/og-image.png" />
+
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png" />
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Klipin",
+    "url": "https://klipin-dolot.vercel.app",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "description": "Downloader media universal untuk TikTok, YouTube, Instagram, Douyin, Pinterest, Facebook, CapCut, dan Spotify.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" }
+  }
+  </script>
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loading-title">P4J∆R</div>
+    <div class="loading-bar-track"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+    <div class="loading-caption">Bentarr coo...</div>
+  </div>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo"><span class="logo-block" aria-hidden="true"></span>KLIPIN</a>
+      <div class="navbar-right">
+        <div class="theme-quick" aria-label="Ganti tema cepat">
+          <button class="theme-swatch swatch-hitam" data-theme="hitam" title="Minecraft Hitam"></button>
+          <button class="theme-swatch swatch-abu" data-theme="abu" title="Minecraft Abu-abu"></button>
+          <button class="theme-swatch swatch-putih" data-theme="putih" title="Minecraft Putih"></button>
+          <button class="theme-swatch swatch-merah" data-theme="merah" title="Minecraft Merah"></button>
+          <button class="theme-swatch swatch-hijau" data-theme="hijau" title="Minecraft Hijau"></button>
+          <button class="theme-swatch swatch-biru" data-theme="biru" title="Minecraft Biru"></button>
+        </div>
+        <button class="options-btn" id="options-btn" title="Ganti tema" aria-label="Ganti tema">&#9881;</button>
+        <button class="dots-btn" id="dots-btn" aria-label="Buka menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="dots-menu" class="dots-menu">
+    <div class="dots-menu-panel pixel-corners">
+      <a href="/" class="nav-link active">Beranda</a>
+      <a href="/cara-penggunaan" class="nav-link">Cara Penggunaan</a>
+      <a href="/larangan" class="nav-link">Larangan</a>
+      <a href="/donasi" class="nav-link">Donasi</a>
+      <button class="pixel-btn sm dots-menu-close" id="dots-menu-close">TUTUP</button>
+    </div>
+  </nav>
+
+  <div id="options-overlay" class="options-overlay">
+    <div class="options-title">PILIH TEMA</div>
+    <div class="options-sub">Tersimpan otomatis di perangkatmu</div>
+    <div class="theme-grid">
+      <button class="pixel-btn theme-option" data-theme="hitam">Minecraft Hitam</button>
+      <button class="pixel-btn theme-option" data-theme="abu">Minecraft Abu-abu</button>
+      <button class="pixel-btn theme-option" data-theme="putih">Minecraft Putih</button>
+      <button class="pixel-btn theme-option" data-theme="merah">Minecraft Merah</button>
+      <button class="pixel-btn theme-option" data-theme="hijau">Minecraft Hijau</button>
+      <button class="pixel-btn theme-option" data-theme="biru">Minecraft Biru</button>
+    </div>
+    <button class="pixel-btn" id="options-close">TUTUP</button>
+  </div>
+
+  <main>
+    <section class="hero container">
+      <p class="hero-eyebrow">PAJAR DOWNLOADER</p>
+      <h1 class="hero-heading">SATU TAUTAN<br /><span class="accent-line">SEMUA PLATFORM</span></h1>
+      <p class="hero-sub">Unduh video, foto, dan audio dari platform favoritmu dalam satu klik — cepat, bersih, tanpa watermark, dan langsung tersimpan ke perangkatmu.</p>
+
+      <form id="download-form" class="console panel pixel-corners">
+        <div class="panel-label">MASUKKAN TAUTAN</div>
+        <div class="input-row">
+          <input
+            id="url-input"
+            type="url"
+            name="url"
+            placeholder="Masukkan tautan media..."
+            required
+            autocomplete="off"
+            aria-label="Tautan media"
+          />
+          <button type="button" id="paste-btn" class="pixel-btn">TEMPEL</button>
+        </div>
+        <div class="console-actions">
+          <button type="submit" id="submit-btn" class="pixel-btn primary">PROSES SEKARANG &#11015;</button>
+        </div>
+        <div class="progress-wrap" id="progress-wrap">
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+      </form>
+
+      <div id="result" class="result-panel container" style="max-width:720px;padding:0;" aria-live="polite"></div>
+    </section>
+
+    <section class="platforms section container" aria-label="Platform yang didukung">
+      <h2 class="section-title">Platform Didukung</h2>
+      <p class="section-sub">Delapan platform, satu pintu masuk</p>
+      <div class="platform-grid">
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          <div><div class="platform-name">TikTok</div><p class="platform-desc">Tanpa watermark, HD & slideshow foto.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+          <div><div class="platform-name">YouTube</div><p class="platform-desc">Pilih kualitas hingga 1080p atau MP3.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.9 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16Zm0 5.62a4.22 4.22 0 1 0 0 8.44 4.22 4.22 0 0 0 0-8.44Zm0 6.96a2.74 2.74 0 1 1 0-5.48 2.74 2.74 0 0 1 0 5.48Zm5.38-7.13a.99.99 0 1 1-1.98 0 .99.99 0 0 1 1.98 0Z"/></svg>
+          <div><div class="platform-name">Instagram</div><p class="platform-desc">Reels, Video, Carousel.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.19 2 11.36c0 2.94 1.42 5.56 3.65 7.28-.16-.62-.31-1.58.06-2.27.34-.62 2.2-9.35 2.2-9.35s-.56-1.13-.56-2.79c0-2.62 1.5-4.57 3.38-4.57 1.6 0 2.37 1.22 2.37 2.68 0 1.63-1.03 4.08-1.56 6.34-.44 1.9.94 3.44 2.8 3.44 3.36 0 5.62-4.36 5.62-9.52C19.96 6.9 17.9 2 12 2Z"/></svg>
+          <div><div class="platform-name">Douyin</div><p class="platform-desc">Tanpa watermark.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.19 2 11.36c0 2.94 1.42 5.56 3.65 7.28-.16-.62-.31-1.58.06-2.27.34-.62 2.2-9.35 2.2-9.35s-.56-1.13-.56-2.79c0-2.62 1.5-4.57 3.38-4.57 1.6 0 2.37 1.22 2.37 2.68 0 1.63-1.03 4.08-1.56 6.34-.44 1.9.94 3.44 2.8 3.44 3.36 0 5.62-4.36 5.62-9.52C19.96 6.9 17.9 2 12 2Z"/></svg>
+          <div><div class="platform-name">Pinterest</div><p class="platform-desc">Video & Foto.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.62.77-1.62 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/></svg>
+          <div><div class="platform-name">Facebook</div><p class="platform-desc">Video publik.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 4-6 4V8Z" fill="currentColor" stroke="none"/></svg>
+          <div><div class="platform-name">CapCut</div><p class="platform-desc">Template.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.4a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.82-.87 7.1-.5 9.72 1.1.3.19.4.58.21.87Zm1.22-2.73a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.14-.56 11.23 1.33.37.23.49.72.26 1.07Zm.1-2.85C14.66 9 7.9 8.78 4.9 9.72a.93.93 0 1 1-.56-1.77c3.46-1.08 10.83-.83 15.1 1.71a.93.93 0 1 1-.96 1.59Z"/></svg>
+          <div><div class="platform-name">Spotify</div><p class="platform-desc">Audio.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" aria-label="Kenapa Klipin">
+      <h2 class="section-title">Kenapa Klipin?</h2>
+      <p class="section-sub">Dibangun untuk cepat, stabil, dan bebas iklan mengganggu</p>
+      <div class="platform-grid">
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z"/></svg>
+          <div><div class="platform-name">Super Cepat</div><p class="platform-desc">Cache pintar & retry otomatis membuat proses tetap kilat.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z"/></svg>
+          <div><div class="platform-name">Aman & Privat</div><p class="platform-desc">Tidak menyimpan file kamu, hanya statistik anonim.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <div><div class="platform-name">Auto Download</div><p class="platform-desc">Klik unduh, file langsung tersimpan tanpa ribet.</p></div>
+        </article>
+        <article class="platform-card panel pixel-corners">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+          <div><div class="platform-name">Bisa Diinstal</div><p class="platform-desc">Progressive Web App — pasang seperti aplikasi asli.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Klipin — Developer by PAJAR. Semua hak cipta konten adalah milik pemiliknya masing-masing.</p>
+    <div class="socials">
+      <a href="https://pixajar.my.id" target="_blank" rel="noopener noreferrer" aria-label="Portofolio"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 7-8-4v9l8 4 8-4V5l-8 4Z"/></svg></a>
+      <a href="https://instagram.com/snapshot.by.jare" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.9 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16Zm0 5.62a4.22 4.22 0 1 0 0 8.44 4.22 4.22 0 0 0 0-8.44Z"/></svg></a>
+      <a href="https://tiktok.com/@whydoikeepwak1ngup67" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      <a href="https://saweria.co/pajardong" target="_blank" rel="noopener noreferrer" aria-label="Donasi"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.2C.6 8.4 2.3 4.6 6 4.1c2-.3 3.9.6 6 3 2.1-2.4 4-3.3 6-3 3.7.5 5.4 4.3 4 7.7C19.5 16.4 12 21 12 21Z"/></svg></a>
+    </div>
+    <p class="notice">Klipin bukan afiliasi resmi dari platform manapun yang disebutkan. Gunakan secara bijak dan hormati hak cipta kreator.</p>
+  </footer>
+
+  <div id="pwa-toast" class="pwa-toast" role="dialog" aria-label="Ajakan instal aplikasi">
+    <div class="pwa-toast-text">PAJAR Downloader terasa lebih cepat lewat aplikasi resmi.</div>
+    <div class="pwa-toast-actions">
+      <button id="pwa-install-btn" class="pixel-btn sm primary">UNDUH</button>
+      <button id="pwa-close-btn" class="pixel-btn sm">X</button>
+    </div>
+  </div>
+
+  <div id="error-dialog" class="dialog-overlay">
+    <div class="dialog-box pixel-corners">
+      <div class="dialog-title">Terjadi Kesalahan</div>
+      <p class="dialog-message" id="dialog-message">Gagal memproses permintaan.</p>
+      <button class="pixel-btn danger" id="dialog-close">TUTUP</button>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/download.js"></script>
+</body>
+</html>

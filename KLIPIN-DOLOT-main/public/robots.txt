@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /adm
+Disallow: /api/
+
+Sitemap: https://klipin.biz.id/sitemap.xml

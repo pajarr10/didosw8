@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Larangan Penggunaan — Klipin</title>
+  <meta name="description" content="Ketentuan dan larangan penggunaan layanan Klipin terkait hak cipta, penyalahgunaan, dan tanggung jawab pengguna." />
+  <link rel="canonical" href="https://klipin.example.com/larangan" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loading-title">KLIPIN</div>
+    <div class="loading-bar-track"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+    <div class="loading-caption">Memuat dunia...</div>
+  </div>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo"><span class="logo-block" aria-hidden="true"></span>KLIPIN</a>
+      <div class="navbar-right">
+        <div class="theme-quick" aria-label="Ganti tema cepat">
+          <button class="theme-swatch swatch-hitam" data-theme="hitam" title="Minecraft Hitam"></button>
+          <button class="theme-swatch swatch-abu" data-theme="abu" title="Minecraft Abu-abu"></button>
+          <button class="theme-swatch swatch-putih" data-theme="putih" title="Minecraft Putih"></button>
+          <button class="theme-swatch swatch-merah" data-theme="merah" title="Minecraft Merah"></button>
+          <button class="theme-swatch swatch-hijau" data-theme="hijau" title="Minecraft Hijau"></button>
+          <button class="theme-swatch swatch-biru" data-theme="biru" title="Minecraft Biru"></button>
+        </div>
+        <button class="options-btn" id="options-btn" title="Ganti tema" aria-label="Ganti tema">&#9881;</button>
+        <button class="dots-btn" id="dots-btn" aria-label="Buka menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="dots-menu" class="dots-menu">
+    <div class="dots-menu-panel pixel-corners">
+      <a href="/" class="nav-link">Beranda</a>
+      <a href="/cara-penggunaan" class="nav-link">Cara Penggunaan</a>
+      <a href="/larangan" class="nav-link active">Larangan</a>
+      <a href="/donasi" class="nav-link">Donasi</a>
+      <button class="pixel-btn sm dots-menu-close" id="dots-menu-close">TUTUP</button>
+    </div>
+  </nav>
+
+  <div id="options-overlay" class="options-overlay">
+    <div class="options-title">PILIH TEMA</div>
+    <div class="options-sub">Tersimpan otomatis di perangkatmu</div>
+    <div class="theme-grid">
+      <button class="pixel-btn theme-option" data-theme="hitam">Minecraft Hitam</button>
+      <button class="pixel-btn theme-option" data-theme="abu">Minecraft Abu-abu</button>
+      <button class="pixel-btn theme-option" data-theme="putih">Minecraft Putih</button>
+      <button class="pixel-btn theme-option" data-theme="merah">Minecraft Merah</button>
+      <button class="pixel-btn theme-option" data-theme="hijau">Minecraft Hijau</button>
+      <button class="pixel-btn theme-option" data-theme="biru">Minecraft Biru</button>
+    </div>
+    <button class="pixel-btn" id="options-close">TUTUP</button>
+  </div>
+
+  <a href="/" class="back-link container">&larr; kembali ke menu utama</a>
+
+  <main class="container" style="padding-bottom:60px;">
+    <section class="hero" style="padding-top:8px">
+      <p class="hero-eyebrow">KETENTUAN LAYANAN</p>
+      <h1 class="page-heading" style="color:var(--danger);">LARANGAN PENGGUNAAN</h1>
+      <p class="page-sub">Wajib dibaca sebelum menggunakan Klipin ya KONTOL</p>
+    </section>
+
+    <div style="max-width:800px;margin:0 auto;">
+      <div class="warning-banner">
+        <span class="warn-icon">&#9888;</span>
+        <span>PERINGATAN: Pelanggaran terhadap ketentuan di bawah ini dapat mengakibatkan pemblokiran akses secara permanen tanpa pemberitahuan sebelumnya.</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Larangan</th>
+              <th>Tingkat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Mendistribusikan ulang konten berhak cipta untuk tujuan komersial tanpa izin pemilik asli.</td>
+              <td><span class="severity tinggi">Tinggi</span></td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Mengunduh konten yang melanggar hukum: kekerasan, pornografi, ujaran kebencian, atau materi ilegal lainnya.</td>
+              <td><span class="severity tinggi">Tinggi</span></td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Melakukan automasi permintaan (bot / scraping massal) yang membebani server di luar kewajaran.</td>
+              <td><span class="severity sedang">Sedang</span></td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>Menggunakan hasil unduhan untuk penipuan, pencemaran nama baik, atau pelanggaran privasi pihak lain.</td>
+              <td><span class="severity tinggi">Tinggi</span></td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Mengklaim kepemilikan atas konten pihak ketiga yang diunduh melalui layanan ini.</td>
+              <td><span class="severity sedang">Sedang</span></td>
+            </tr>
+            <tr>
+              <td>06</td>
+              <td>Menyalahgunakan endpoint API di luar penggunaan wajar pribadi (rate limit berlaku).</td>
+              <td><span class="severity rendah">Rendah</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rule-status">&#9888; PATUHI SEMUA KETENTUAN DI ATAS &#9888;</div>
+
+      <div style="margin-top:36px;">
+        <div class="rule-item">
+          <div class="rule-number">&#167;1</div>
+          <p class="rule-text"><strong>Tanggung Jawab Pengguna.</strong> Seluruh tanggung jawab atas penggunaan media yang diunduh sepenuhnya berada pada pengguna. Klipin tidak menyimpan, mengklaim, atau memiliki hak atas konten pihak ketiga yang diproses melalui layanan ini.</p>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">&#167;2</div>
+          <p class="rule-text"><strong>Hak Cipta.</strong> Setiap konten yang dapat diunduh melalui Klipin tetap menjadi hak milik penuh dari kreator atau pemegang hak cipta aslinya. Klipin hanya bertindak sebagai perantara teknis untuk mempermudah pengunduhan dari tautan yang bersifat publik.</p>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">&#167;3</div>
+          <p class="rule-text"><strong>Pembatasan Layanan.</strong> Kami berhak membatasi, menangguhkan, atau menghentikan akses layanan bagi pengguna yang terbukti melanggar ketentuan di atas, tanpa pemberitahuan sebelumnya.</p>
+        </div>
+        <div class="rule-item">
+          <div class="rule-number">&#167;4</div>
+          <p class="rule-text"><strong>Perubahan Ketentuan.</strong> Ketentuan ini dapat diperbarui sewaktu-waktu tanpa pemberitahuan terlebih dahulu. Penggunaan layanan secara berkelanjutan dianggap sebagai persetujuan terhadap ketentuan terbaru.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Klipin — Developer by PAJAR.</p>
+  </footer>
+
+  <div id="pwa-toast" class="pwa-toast" role="dialog" aria-label="Ajakan instal aplikasi">
+    <div class="pwa-toast-text">PAJAR Downloader terasa lebih cepat lewat aplikasi resmi.</div>
+    <div class="pwa-toast-actions">
+      <button id="pwa-install-btn" class="pixel-btn sm primary">UNDUH</button>
+      <button id="pwa-close-btn" class="pixel-btn sm">X</button>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cara Penggunaan — Klipin</title>
+  <meta name="description" content="Panduan 3 langkah menggunakan Klipin untuk mengunduh video, foto, dan audio dari TikTok, Instagram, YouTube, Pinterest, Douyin, Spotify, Facebook, dan CapCut." />
+  <link rel="canonical" href="https://klipin.example.com/cara-penggunaan" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loading-title">KLIPIN</div>
+    <div class="loading-bar-track"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+    <div class="loading-caption">Memuat dunia...</div>
+  </div>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo"><span class="logo-block" aria-hidden="true"></span>KLIPIN</a>
+      <div class="navbar-right">
+        <div class="theme-quick" aria-label="Ganti tema cepat">
+          <button class="theme-swatch swatch-hitam" data-theme="hitam" title="Minecraft Hitam"></button>
+          <button class="theme-swatch swatch-abu" data-theme="abu" title="Minecraft Abu-abu"></button>
+          <button class="theme-swatch swatch-putih" data-theme="putih" title="Minecraft Putih"></button>
+          <button class="theme-swatch swatch-merah" data-theme="merah" title="Minecraft Merah"></button>
+          <button class="theme-swatch swatch-hijau" data-theme="hijau" title="Minecraft Hijau"></button>
+          <button class="theme-swatch swatch-biru" data-theme="biru" title="Minecraft Biru"></button>
+        </div>
+        <button class="options-btn" id="options-btn" title="Ganti tema" aria-label="Ganti tema">&#9881;</button>
+        <button class="dots-btn" id="dots-btn" aria-label="Buka menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="dots-menu" class="dots-menu">
+    <div class="dots-menu-panel pixel-corners">
+      <a href="/" class="nav-link">Beranda</a>
+      <a href="/cara-penggunaan" class="nav-link active">Cara Penggunaan</a>
+      <a href="/larangan" class="nav-link">Larangan</a>
+      <a href="/donasi" class="nav-link">Donasi</a>
+      <button class="pixel-btn sm dots-menu-close" id="dots-menu-close">TUTUP</button>
+    </div>
+  </nav>
+
+  <div id="options-overlay" class="options-overlay">
+    <div class="options-title">PILIH TEMA</div>
+    <div class="options-sub">Tersimpan otomatis di perangkatmu</div>
+    <div class="theme-grid">
+      <button class="pixel-btn theme-option" data-theme="hitam">Minecraft Hitam</button>
+      <button class="pixel-btn theme-option" data-theme="abu">Minecraft Abu-abu</button>
+      <button class="pixel-btn theme-option" data-theme="putih">Minecraft Putih</button>
+      <button class="pixel-btn theme-option" data-theme="merah">Minecraft Merah</button>
+      <button class="pixel-btn theme-option" data-theme="hijau">Minecraft Hijau</button>
+      <button class="pixel-btn theme-option" data-theme="biru">Minecraft Biru</button>
+    </div>
+    <button class="pixel-btn" id="options-close">TUTUP</button>
+  </div>
+
+  <a href="/" class="back-link container">&larr; kembali ke menu utama</a>
+
+  <main class="container">
+    <section class="hero" style="padding-top:8px">
+      <p class="hero-eyebrow">PANDUAN</p>
+      <h1 class="page-heading">CARA PENGGUNAAN</h1>
+      <p class="page-sub">Hanya 3 langkah mudah untuk mengunduh media favoritmu</p>
+    </section>
+
+    <div class="quest-list" style="max-width:680px;margin-left:auto;margin-right:auto;">
+      <article class="quest-step panel pixel-corners">
+        <div class="quest-number">01</div>
+        <div class="quest-title">Salin Link</div>
+        <p class="quest-desc">
+          Copy link dari platform yang didukung:
+          <ul>
+            <li>TikTok</li>
+            <li>Instagram</li>
+            <li>YouTube</li>
+            <li>Pinterest</li>
+            <li>Douyin</li>
+            <li>Spotify</li>
+            <li>Facebook</li>
+            <li>CapCut</li>
+          </ul>
+        </p>
+        <div class="quest-status">&#9733; QUEST 1/3</div>
+      </article>
+
+      <article class="quest-step panel pixel-corners">
+        <div class="quest-number">02</div>
+        <div class="quest-title">Tempel &amp; Proses</div>
+        <p class="quest-desc">Tempel tautan pada kolom input di halaman utama, lalu klik tombol "Proses Sekarang". Sistem akan memvalidasi dan mengambil data media secara otomatis.</p>
+        <div class="quest-status">&#9733; QUEST 2/3</div>
+      </article>
+
+      <article class="quest-step panel pixel-corners">
+        <div class="quest-number">03</div>
+        <div class="quest-title">Unduh</div>
+        <p class="quest-desc">Pratinjau media akan muncul lengkap dengan judul, thumbnail, dan pilihan kualitas. Klik tombol "Unduh" — file langsung tersimpan ke perangkatmu tanpa membuka tab lain.</p>
+        <div class="quest-status">&#9733; QUEST 3/3 &mdash; SELESAI</div>
+      </article>
+    </div>
+
+    <div style="text-align:center; margin: 36px 0 60px;">
+      <a href="/" class="pixel-btn primary" style="display:inline-block;">MULAI UNDUH SEKARANG</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Klipin — Developer by PAJAR.</p>
+  </footer>
+
+  <div id="pwa-toast" class="pwa-toast" role="dialog" aria-label="Ajakan instal aplikasi">
+    <div class="pwa-toast-text">PAJAR Downloader terasa lebih cepat lewat aplikasi resmi.</div>
+    <div class="pwa-toast-actions">
+      <button id="pwa-install-btn" class="pixel-btn sm primary">UNDUH</button>
+      <button id="pwa-close-btn" class="pixel-btn sm">X</button>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Admin Monitoring — Klipin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://klipin.biz.id/adm" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loading-title">KLIPIN</div>
+    <div class="loading-bar-track"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+    <div class="loading-caption">Memuat dunia...</div>
+  </div>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="logo"><span class="logo-block" aria-hidden="true"></span>KLIPIN</a>
+      <div class="navbar-right">
+        <div class="theme-quick" aria-label="Ganti tema cepat">
+          <button class="theme-swatch swatch-hitam" data-theme="hitam" title="Minecraft Hitam"></button>
+          <button class="theme-swatch swatch-abu" data-theme="abu" title="Minecraft Abu-abu"></button>
+          <button class="theme-swatch swatch-putih" data-theme="putih" title="Minecraft Putih"></button>
+          <button class="theme-swatch swatch-merah" data-theme="merah" title="Minecraft Merah"></button>
+          <button class="theme-swatch swatch-hijau" data-theme="hijau" title="Minecraft Hijau"></button>
+          <button class="theme-swatch swatch-biru" data-theme="biru" title="Minecraft Biru"></button>
+        </div>
+        <button class="options-btn" id="options-btn" title="Ganti tema" aria-label="Ganti tema">&#9881;</button>
+        <button class="dots-btn" id="dots-btn" aria-label="Buka menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="dots-menu" class="dots-menu">
+    <div class="dots-menu-panel pixel-corners">
+      <a href="/" class="nav-link">Beranda</a>
+      <a href="/cara-penggunaan" class="nav-link">Cara Penggunaan</a>
+      <a href="/larangan" class="nav-link">Larangan</a>
+      <a href="/donasi" class="nav-link">Donasi</a>
+      <button class="pixel-btn sm dots-menu-close" id="dots-menu-close">TUTUP</button>
+    </div>
+  </nav>
+
+  <div id="options-overlay" class="options-overlay">
+    <div class="options-title">PILIH TEMA</div>
+    <div class="options-sub">Tersimpan otomatis di perangkatmu</div>
+    <div class="theme-grid">
+      <button class="pixel-btn theme-option" data-theme="hitam">Minecraft Hitam</button>
+      <button class="pixel-btn theme-option" data-theme="abu">Minecraft Abu-abu</button>
+      <button class="pixel-btn theme-option" data-theme="putih">Minecraft Putih</button>
+      <button class="pixel-btn theme-option" data-theme="merah">Minecraft Merah</button>
+      <button class="pixel-btn theme-option" data-theme="hijau">Minecraft Hijau</button>
+      <button class="pixel-btn theme-option" data-theme="biru">Minecraft Biru</button>
+    </div>
+    <button class="pixel-btn" id="options-close">TUTUP</button>
+  </div>
+
+  <main>
+    <!-- ==== LOGIN ==== -->
+    <section id="admin-login" class="admin-login panel pixel-corners">
+      <div class="panel-label">ADMIN MONITORING</div>
+      <input id="login-publickey" type="text" placeholder="Key Public" autocomplete="off" />
+      <input id="login-password" type="password" placeholder="Password" autocomplete="off" />
+      <button id="login-btn" class="pixel-btn primary block">MASUK</button>
+      <div id="login-error" style="color:var(--danger);font-size:10px;margin-top:10px;display:none;line-height:1.8;"></div>
+      <div class="admin-login__hint">
+        Key Public: <strong>pajar</strong><br />
+        Password: <strong>pajar</strong>
+      </div>
+    </section>
+
+    <!-- ==== DASHBOARD ==== -->
+    <section id="admin-dashboard" class="admin-dashboard">
+      <div class="admin-topbar">
+        <h1 class="page-heading" style="font-size:16px;"><span class="live-dot"></span>MONITORING DASHBOARD</h1>
+        <button id="logout-btn" class="pixel-btn danger sm">KELUAR</button>
+      </div>
+
+      <div id="redis-warning" class="warning-banner" style="display:none;">
+        <span class="warn-icon">&#9888;</span>
+        <span>REDIS BELUM TERKONEKSI — statistik disimpan sementara di memori server dan akan <b>hilang setiap server restart / cold start</b>. Isi <code>UPSTASH_REDIS_REST_URL</code> &amp; <code>UPSTASH_REDIS_REST_TOKEN</code> di Environment Variables Vercel lalu redeploy.</span>
+      </div>
+
+      <div id="empty-state" class="panel pixel-corners" style="display:none;margin-bottom:22px;text-align:center;padding:28px;">
+        <div style="font-size:13px;margin-bottom:10px;">&#128203; BELUM ADA DATA</div>
+        <p style="font-size:10px;color:var(--muted);line-height:1.9;">Statistik masih kosong karena belum ada permintaan download yang tercatat. Coba proses satu tautan di <a href="/" style="color:var(--accent);text-decoration:underline;">halaman utama</a>, lalu data di sini akan otomatis muncul (refresh tiap 8 detik).</p>
+      </div>
+
+      <div id="detail-bar" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:9px;color:var(--muted);letter-spacing:1px;">
+        <span>SAMPEL LOG DIANALISIS: <b id="detail-log-count" style="color:var(--text)">0</b></span>
+        <span>SUCCESS RATE: <b id="detail-success-rate" style="color:var(--accent)">0%</b></span>
+        <span>PLATFORM TERPOPULER: <b id="detail-top-platform" style="color:var(--text)">-</b></span>
+        <span>TERAKHIR DIPERBARUI: <b id="detail-last-updated" style="color:var(--text)">-</b></span>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-box panel pixel-corners"><div class="stat-box__value" id="stat-total">0</div><div class="stat-box__label">Total Request</div></div>
+        <div class="stat-box panel pixel-corners"><div class="stat-box__value" id="stat-today">0</div><div class="stat-box__label">Hari Ini</div></div>
+        <div class="stat-box panel pixel-corners"><div class="stat-box__value" id="stat-success">0</div><div class="stat-box__label">Sukses</div></div>
+        <div class="stat-box panel pixel-corners"><div class="stat-box__value" id="stat-error">0</div><div class="stat-box__label">Error</div></div>
+      </div>
+
+      <div class="chart-grid">
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Request per Jam (Line)</div>
+          <canvas id="chart-hourly"></canvas>
+        </div>
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Distribusi Platform (Pie)</div>
+          <canvas id="chart-platform"></canvas>
+        </div>
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Browser (Bar)</div>
+          <canvas id="chart-browser"></canvas>
+        </div>
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Sistem Operasi (Bar)</div>
+          <canvas id="chart-os"></canvas>
+        </div>
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Sukses vs Error (Area)</div>
+          <canvas id="chart-status"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Top URL Diunduh (Klik untuk Kunjungi)</div>
+          <div id="top-url-list" class="mini-list"></div>
+        </div>
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Top IP Address</div>
+          <div id="ip-list" class="mini-list"></div>
+        </div>
+        <div class="chart-box panel pixel-corners">
+          <div class="chart-box__title">Negara &amp; Device</div>
+          <div id="country-device-list" class="mini-list"></div>
+        </div>
+      </div>
+
+      <div class="log-table-wrap panel pixel-corners">
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th>Waktu</th><th>Platform</th><th>URL</th><th>IP</th><th>Negara</th><th>Browser</th><th>OS</th><th>Device</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="log-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Klipin — Developer by PAJAR.</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

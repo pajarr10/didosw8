@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TOUCH BY P4J∆R</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:"Inter",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+    width:min(92%,900px);
+    text-align:center;
+    padding:24px;
+}
+
+/* GIF */
+.banner{
+    display:block;
+    width:clamp(180px,30vw,260px);
+    height:auto;
+    margin:0 auto 42px;
+    user-select:none;
+    pointer-events:none;
+}
+
+/* Judul */
+h1{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:clamp(4rem,11vw,8rem);
+    font-weight:400;
+    letter-spacing:.22em;
+    line-height:1;
+    color:#fff;
+    text-transform:uppercase;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.08),
+        0 0 24px rgba(255,255,255,.03);
+}
+
+/* Garis */
+.line{
+    width:180px;
+    height:1px;
+    margin:32px auto 24px;
+    background:rgba(255,255,255,.15);
+}
+
+/* Subteks */
+p{
+    color:#777;
+    font-size:.9rem;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    font-weight:500;
+}
+
+::selection{
+    background:#fff;
+    color:#000;
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+.banner{
+    width:clamp(160px,50vw,220px);
+    margin-bottom:32px;
+}
+
+h1{
+    font-size:clamp(3.2rem,15vw,5rem);
+    letter-spacing:.16em;
+}
+
+.line{
+    width:140px;
+}
+
+p{
+    font-size:.75rem;
+    letter-spacing:.25em;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <img
+        src="https://c.termai.cc/i127/mS3K.gif"
+        alt="Banner"
+        class="banner">
+
+    <h1>TOUCH BY P4J∆R</h1>
+
+    <div class="line"></div>
+
+    <p>nothing lasts forever.</p>
+
+</div>
+
+</body>
+</html>
