@@ -1,0 +1,96 @@
+# P4Drop — File Upload & CDN
+
+Dibuat oleh **Pajar** ([pajar.biz.id](https://pajar.biz.id)).
+
+Stack: **Node.js serverless functions** (Vercel `/api`) + **HTML/CSS/JS vanilla** murni di frontend (tanpa React/Next.js/framework berat). Storage pakai **Vercel Blob**, tanpa database terpisah (metadata disimpan sebagai JSON di Blob).
+
+## 1. Setup lokal
+
+```bash
+npm install
+npm i -g vercel
+vercel dev
+```
+
+## 2. Environment Variables (wajib di Vercel Project Settings)
+
+Salin dari `.env.example`:
+
+- `BLOB_READ_WRITE_TOKEN` — dari Vercel Dashboard -> Storage -> Blob -> Create Store.
+- `ADMIN_SECRET` — password untuk masuk ke `/admen`. Gunakan string acak yang panjang, JANGAN ditanam di frontend/source code.
+- `MAX_MEDIA_MB`, `MAX_FILE_MB`, `RATE_LIMIT_PER_MINUTE` — opsional, ada default.
+
+## 3. Domain
+
+Cukup satu domain untuk seluruh project — **tidak perlu subdomain terpisah**. Semua route (landing page, uploader, admin, API, dan URL file) berada di domain yang sama, misalnya:
+
+```
+p4drop.biz.id/            -> landing page
+p4drop.biz.id/upload      -> uploader media
+p4drop.biz.id/uploadong   -> uploader file/source
+p4drop.biz.id/status      -> statistik
+p4drop.biz.id/admen       -> admin panel
+p4drop.biz.id/pajar/<id>.<ext>  -> file media
+p4drop.biz.id/pjr/<id>          -> file/source
+```
+
+Domain **tidak pernah di-hardcode** di source code — selalu diambil dari header `Host` / `X-Forwarded-Host` saat request (lihat `lib/domain.js`). Jadi kalau kamu ganti domain di Vercel, tidak perlu ubah kode sama sekali.
+
+## 4. Struktur Route
+
+| Route | Keterangan |
+|---|---|
+| `GET /` | Landing page |
+| `GET /upload` | Uploader media (tanpa expiration) |
+| `GET /uploadong` | Uploader file/source/archive (dengan expiration) |
+| `GET /status` | Statistik real-time |
+| `GET /admen` | Login admin |
+| `GET /admen/dashboard` | Panel admin (butuh login) |
+| `POST /api/upload` | Upload media -> `domain.com/pajar/<id>.<ext>` |
+| `POST /api/uploadong` | Upload file -> `domain.com/pjr/<id>` |
+| `GET /api/stats` | Statistik JSON |
+| `GET /pajar/<id>.<ext>` | Redirect ke file media asli |
+| `GET /pjr/<id>` | Landing page file, `?dl=1` untuk download |
+
+## 5. Maintenance Mode
+
+Admin bisa mengaktifkan/mematikan maintenance mode dari `/admen/dashboard` (menu **Maintenance**). Saat aktif:
+
+- Semua halaman publik (`/`, `/upload`, `/uploadong`, `/status`, `/pajar/*`, `/pjr/*`) otomatis menampilkan `public/maintenance.html` (HTTP 503), URL tetap sama.
+- `/admen` dan seluruh `/api/*` tetap bisa diakses normal, supaya admin selalu bisa login dan mematikan mode ini lagi.
+- Implementasi lewat `middleware.js` (Vercel Edge Middleware) yang mengecek status ke `GET /api/maintenance-status` setiap request. Kalau pengecekan gagal karena alasan apa pun, sistem **fail-open** (tetap tampil normal) supaya error tidak pernah mengunci semua pengguna keluar dari situs.
+- Halaman maintenance auto-refresh setiap 30 detik.
+
+## 6. SEO (biar terindeks Google)
+
+- `/robots.txt` dan `/sitemap.xml` di-generate otomatis lewat `api/robots.js` dan `api/sitemap.js` — domain diambil dari request, bukan hardcode, jadi otomatis benar di domain apa pun.
+- Landing page (`/`) sudah punya meta description, Open Graph, Twitter Card, dan JSON-LD (`WebApplication` schema) supaya Google lebih mudah memahami isi situs.
+- `/upload`, `/uploadong`, `/status` masing-masing punya meta description dan canonical link sendiri.
+- Setelah deploy, submit domain kamu ke [Google Search Console](https://search.google.com/search-console) dan kirim `https://domainmu.com/sitemap.xml` supaya proses indexing lebih cepat — SEO organik butuh waktu (biasanya beberapa hari sampai minggu), file-file ini hanya mempermudah Google menemukan & memahami situsnya, bukan jaminan langsung muncul di halaman pertama.
+- `/admen` dan `/api/*` sengaja di-`Disallow` di robots.txt supaya tidak ikut ter-index.
+
+## 7. Keamanan yang sudah diimplementasikan
+
+- File dari `/uploadong` **tidak pernah dieksekusi** di server — selalu disimpan & disajikan sebagai `application/octet-stream` attachment, apa pun ekstensinya (termasuk `.php`, `.sh`, `.exe`, `.html`, `.svg`, dll).
+- Archive (`.zip`, `.rar`, `.7z`, `.tar`) **tidak pernah diekstrak otomatis**.
+- Validasi ekstensi & ukuran file di kedua endpoint upload.
+- Nama file di-generate acak (`nanoid`, alfabet tanpa karakter ambigu) — nama asli user tidak dipakai sebagai path storage.
+- Rate limit 100 file/menit/client, disimpan di shared store (Blob) — bukan memory lokal proses, supaya konsisten di multi-instance serverless.
+- Directory listing `/pajar/` dan `/pjr/` diblokir (403 custom page).
+- `/admen` pakai cookie sesi ber-signature HMAC (bukan key statis di frontend), `HttpOnly`, `Secure`, `SameSite=Strict`.
+- Security headers dasar (`X-Content-Type-Options`, `X-Frame-Options`, dll) via `vercel.json`.
+- Tidak ada secret yang di-hardcode — semua lewat environment variables.
+
+## 8. Catatan skala & pengembangan lanjutan
+
+- Setiap file metadata disimpan sebagai blob JSON **terpisah per-ID** (`meta/files/<id>.json`), bukan satu file JSON besar bersama. Ini penting: upload/baca satu file tidak pernah bertabrakan (race condition) dengan file lain, jadi file yang baru selesai diupload langsung bisa diakses tanpa risiko "hilang" karena tertimpa tulisan lain. Rate limit juga per client+menit di key terpisah (`meta/ratelimit/<client>-<menit>.json`) dengan alasan yang sama.
+- Yang masih memakai counter bersama (dan boleh sedikit meleset di trafik sangat tinggi bersamaan) hanya statistik agregat non-kritis: total upload sukses/gagal, total download, total bandwidth (`meta/counters.json`). Ini tidak memengaruhi apakah file bisa diakses atau tidak — murni angka tampilan di `/status`.
+- Untuk produksi skala sangat besar, tetap disarankan pindah ke **Vercel KV / Upstash Redis** untuk counter atomic, dan/atau database asli (Postgres/Turso) untuk metadata + query yang lebih efisien (saat ini `listFiles()` di admin dashboard melakukan fetch per-file, cukup untuk skala kecil-menengah).
+- Cleanup fisik file expired dari Blob storage belum otomatis (saat ini file expired cukup "tidak bisa diakses" secara logis). Bisa ditambahkan **Vercel Cron Job** yang memanggil endpoint cleanup harian.
+- Menu admin (`Storage Overview`, `File Type Settings`, dll) sudah menampilkan data nyata dari sistem dan siap dikembangkan lebih lanjut sesuai kebutuhan.
+
+## 9. Kontak
+
+- Portfolio: https://pajar.biz.id
+- WhatsApp: https://wa.me/6285708557587
+- Telegram: https://t.me/JarzGoslingF
